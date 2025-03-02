@@ -27,8 +27,8 @@ def document_map():
 @router_preprocess.get("/document/QuestionAnswer")
 def document_qna(
         question: str= Header(...,description="Mandatory Question"),
-        knowledge_base_param = Header(description="Knowledge Base Param used for the Purpose of Seggregation"),
-        document_name = Header(description="Document Name, it would be used to ")):
+        knowledge_base_param = Header(...,description="Knowledge Base Param used for the Purpose of Seggregation"),
+        document_name = Header(...,description="Document Name, it would be used to ")):
     print('The Function to Call the Class for Questions answering has been invoked')
     final_result = QuestionAnswer(question, document_name, knowledge_base_param).execute()
     return final_result
@@ -36,13 +36,12 @@ def document_qna(
 
 @router_preprocess.post("/document/document_upload")
 def document_preprocess(
-        user_id: str = Form(...),
-        document_name: str = Form(...),
-        document_category: str = Form(...),
-        knowledge_base_param: str = Form(...),
+        user_id: str = Header(..., description="User ID to record the User who is uploading the file."),
+        document_name: str = Header(..., description= "A Mandatory Name of the Document"),
+        document_category: str = Header(description= "Category to which the Document belongs."),
+        knowledge_base_param: str = Header(...,description ="Knowledge Base Paramter to Seggregate Different Knowledge Bases"),
         file: UploadFile = File(...),  # If you're uploading a file
 ):
-    print('This function has been invoked')
     DocumentUpload(file,
                    document_name,
                    document_category,
