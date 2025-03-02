@@ -1,0 +1,9 @@
+Starting the Code Base:
+
+As a user Go the the Diretory : DocumentRAG
+In the Terminal Write the Command :export PYTHONPATH=$(pwd) (For Mac OS) 
+                                   set PYTHONPATH=%CD% (For Windows based Systems)
+
+Once This is Done, kindly use the Following Command to Run the Server on the Local system: python DocumentRAG/EndPoints/run.py
+
+
