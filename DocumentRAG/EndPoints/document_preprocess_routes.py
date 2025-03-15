@@ -28,7 +28,7 @@ def document_map():
 def document_qna(
         question: str= Header(...,description="Mandatory Question"),
         knowledge_base_param = Header(...,description="Knowledge Base Param used for the Purpose of Seggregation"),
-        document_name = Header(...,description="Document Name, it would be used to ")):
+        document_name = Header(None,description="")):
     print('The Function to Call the Class for Questions answering has been invoked')
     final_result = QuestionAnswer(question, document_name, knowledge_base_param).execute()
     return final_result

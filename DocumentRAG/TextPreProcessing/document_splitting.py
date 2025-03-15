@@ -12,12 +12,12 @@ class DocumentSplitting:
         try:
             nltk.download('punkt_tab')
             self.sentence_splitter_obj = DocumentSplitter(split_by='sentence',
-                                                          split_length=50,
-                                                          split_overlap=20)
+                                                          split_length=5,
+                                                          split_overlap=2)
             self.sentence_splitter_obj.warm_up()
             self.paragraph_splitter_obj = DocumentSplitter(split_by='passage',
-                                                           split_overlap=50,
-                                                           split_length=100)
+                                                           split_overlap=1,
+                                                           split_length=5)
             self.paragraph_splitter_obj.warm_up()
         except Exception as err:
             self.sentence_splitter_obj = None
