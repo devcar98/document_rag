@@ -15,8 +15,9 @@ class PDFOperations:
 
     def extract_text(self):
         try:
-
+            print('Trying to Read the file path')
             pdf_obj = PdfReader(self.file_path)
+            print('This is my pdf file path',self.file_path)
             counter = 0
             while counter < len(pdf_obj.pages[0:]):
                 page_obj = pdf_obj.pages[counter]

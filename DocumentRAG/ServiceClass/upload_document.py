@@ -28,7 +28,6 @@ class DocumentUpload:
         extension_value = FetchExtension(self.file_obj)
         file_operation_obj = FileOperations(extension_value.extension, self.file_obj)
         extracted_text = file_operation_obj.file_operation_obj.extract_text()
-
         # Once the above Line Gets Executed, we Have the Text Extracted From it
         """
         The Extracted Text would be Going through the Following set of Steps
@@ -42,6 +41,7 @@ class DocumentUpload:
         extracted_text = text_cleaning_obj.clean_text(extracted_text)
         document_store_obj = CreateDocument(extracted_text)
         extracted_text = document_store_obj.extracted_data
+
         extracted_text = DocumentCleaning().document_cleaner(extracted_text)
         splitting_obj = DocumentSplitting()
         sentence_chunks = splitting_obj.split_sentence(extracted_text)
